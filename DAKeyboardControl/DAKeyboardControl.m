@@ -49,19 +49,19 @@ static NSString *UIViewKeyboardObservingKey;
 {
     // Swizzle the 'addSubview:' method to ensure that all input fields
     // have a valid inputAccessoryView upon addition to the view heirarchy
-    SEL originalSelector = @selector(addSubview:);
-    SEL swizzledSelector = @selector(swizzled_addSubview:);
-    Method originalMethod = class_getInstanceMethod(self, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
-    class_addMethod(self,
-                    originalSelector,
-                    class_getMethodImplementation(self, originalSelector),
-                    method_getTypeEncoding(originalMethod));
-    class_addMethod(self,
-                    swizzledSelector,
-                    class_getMethodImplementation(self, swizzledSelector),
-                    method_getTypeEncoding(swizzledMethod));
-    method_exchangeImplementations(originalMethod, swizzledMethod);
+//    SEL originalSelector = @selector(addSubview:);
+//    SEL swizzledSelector = @selector(swizzled_addSubview:);
+//    Method originalMethod = class_getInstanceMethod(self, originalSelector);
+//    Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
+//    class_addMethod(self,
+//                    originalSelector,
+//                    class_getMethodImplementation(self, originalSelector),
+//                    method_getTypeEncoding(originalMethod));
+//    class_addMethod(self,
+//                    swizzledSelector,
+//                    class_getMethodImplementation(self, swizzledSelector),
+//                    method_getTypeEncoding(swizzledMethod));
+//    method_exchangeImplementations(originalMethod, swizzledMethod);
     
     UIViewKeyboardObservingKey = SYSTEM_VERSION_LESS_THAN(@"8") ? @"frame" : @"center";
 }
